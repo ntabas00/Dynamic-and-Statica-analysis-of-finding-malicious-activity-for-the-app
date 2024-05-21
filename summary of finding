@@ -1,0 +1,23 @@
+Summary of Findings
+ 
+Static Analysis: 
+●	Used JADX to analyze XML files for permissions and activities such as analyzing the code
+●	Few apps had potential security issues like weaker encryption algorithms for hash function (MD5, SHA-1)
+●	Verifies APK signature versions (v1,v2,v3) to confirm app authenticity and integrity
+●	Most apps did not show signs of insecurity
+●	Analyzed some apps and found strong encryption such as SHA-256 and RSA 
+●	DSA (digital signature algorithm) was also found, which is a combination of SHA-256 and RSA
+●	Found zip bomb attacks on some apps
+●	Analyzed permissions from “android.permission.DUMP” for potential malicious gathering of data
+●	Handshake methods were found in some apps, though these were not cryptographic handshakes, but rather a  metaphorical handshake between the app and an advertisement service
+
+Dynamic Analysis:
+●	Used Burp Suite to analyze HTTP traffic for each app
+●	Examined network requests and data transmissions for any user-sensitive information that may be transmitted 
+●	Few apps didn’t send any HTTP requests other than advertising-related requests indicating no risk to the user 
+●	The majority of apps did not transmit sensitive user data such as location or account information
+●	Some apps send non-compromising device information (OS, time zone, app version)
+
+Apps Analysis Outcome:
+
+●	Many apps had similar outcomes, such as similar encryption methods and similar HTTP requests
